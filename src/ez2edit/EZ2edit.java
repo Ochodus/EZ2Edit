@@ -8,7 +8,7 @@ public class EZ2edit extends JPanel {
 		EZ2edit editor = new EZ2edit();
 		JFrame frame = new JFrame("EZ2Edit");
 		frame.getContentPane().add(editor);
-		frame.setBounds(200,300,430,450);
+		frame.setBounds(200,300,400,450);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
