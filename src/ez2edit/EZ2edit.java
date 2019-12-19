@@ -1,15 +1,19 @@
 package ez2edit;
 
+import java.awt.*;
 import javax.swing.*;
 
-@SuppressWarnings("serial")
-public class EZ2edit extends JPanel {
+public class EZ2edit {
+	
 	public static void main(String[] args) {
-		EZ2edit editor = new EZ2edit();
+		SequenceTable sqTable = new SequenceTable();
+		Dimension dim = new Dimension(1080,720);
 		JFrame frame = new JFrame("EZ2Edit");
-		frame.getContentPane().add(editor);
-		frame.setBounds(200,300,400,450);
+		frame.setLocation(0, 0);
+		frame.setPreferredSize(dim);
+		
+		frame.add(sqTable.jScrollPane);
+		frame.pack();
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
