@@ -1,5 +1,6 @@
 package ez2edit;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -15,17 +16,13 @@ public class SqArea extends JPanel {
 	SqTable sqTable = new SqTable();
 	JScrollPane scroll = new JScrollPane(sqTable);
 	
-	static GridBagLayout gbl = new GridBagLayout();
+	static BorderLayout bl = new BorderLayout();
 	
 	public SqArea() {
-		GridBagConstraints[] gbc = new GridBagConstraints[2];
+		this.setLayout(bl);
 		
-		gbc[0] = new GridBagConstraints();
-		gbc[1] = new GridBagConstraints();
-		
-		gbc[0].fill = GridBagConstraints.VERTICAL;
 		setOpaque(true);
 		setBackground(Color.BLACK);
-		add(scroll, gbc[0]);
+		add(scroll);
 	}
 }

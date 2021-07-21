@@ -20,7 +20,7 @@ public class MainFrame extends JFrame {
 		super(name);
 		this.setLayout(bl); 
 		this.add(toolbar, BorderLayout.NORTH);
-		this.add(sqArea, BorderLayout.WEST);
+		this.add(sqArea, BorderLayout.CENTER);
 		this.add(configArea, BorderLayout.EAST);
 		this.add(statBar, BorderLayout.SOUTH);
 		Dimension dim = new Dimension(1080,720);

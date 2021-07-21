@@ -3,7 +3,7 @@ package ez2edit;
 import java.awt.*;
 import javax.swing.*;
 
-public class SqCell extends JPanel {
+public class SqBar extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -14,7 +14,8 @@ public class SqCell extends JPanel {
 	boolean isGrid = false;
 	boolean isSelected = false;
 	
-	public SqCell() {
+	public SqBar(int initBeat, int initModer) {
+		
 		setBackground(Color.GREEN);
 		setVisible(true);
 		setSize(10, 50);
@@ -24,6 +25,5 @@ public class SqCell extends JPanel {
 		super.paintComponent(g);
 		repaint();
 		g.setColor(Color.RED);
-		//g.drawRect(0, 0, 50, 10);
 	}
 }
