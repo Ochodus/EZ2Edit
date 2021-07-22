@@ -2,6 +2,8 @@ package ez2edit;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.JFrame;
 
@@ -13,6 +15,7 @@ public class MainFrame extends JFrame {
 	static SqArea sqArea = new SqArea();
 	static ConfigArea configArea = new ConfigArea();
 	static StatBar statBar = new StatBar();
+	public static Dimension frameDim = new Dimension(1920,1080);
 	
 	static BorderLayout bl = new BorderLayout();
 	
@@ -23,11 +26,18 @@ public class MainFrame extends JFrame {
 		this.add(sqArea, BorderLayout.CENTER);
 		this.add(configArea, BorderLayout.EAST);
 		this.add(statBar, BorderLayout.SOUTH);
-		Dimension dim = new Dimension(1080,720);
 		this.setLocation(0, 0);
-		this.setPreferredSize(dim);
+		this.setPreferredSize(frameDim);
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		this.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				frameDim = e.getComponent().getSize();
+				System.out.println(sqArea.getSize());
+			}
+		});
 	}
 }

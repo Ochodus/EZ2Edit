@@ -1,16 +1,23 @@
 package ez2edit;
 
 import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
 public class SqTable extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
+	static FlowLayout fl = new FlowLayout(FlowLayout.LEFT, Config.typeGap, 0);
 	
-	public SqTable() {	
+	public SqTable() {
+		this.setLayout(fl);	
+		setBackground(Color.BLACK);
+	}
+	
+	public void addColumns() {
 		add(SqComponent.sqTypeConfig);
+		
 		switch (Config.playMode) {
 			case 5:
 				add(SqComponent.sqTypeLKey);
@@ -41,6 +48,5 @@ public class SqTable extends JPanel {
 				add(SqComponent.sqTypeRScratch);
 				break;
 		}
-		setBackground(Color.BLACK);
 	}
 }
