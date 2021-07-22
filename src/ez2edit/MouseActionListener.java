@@ -8,6 +8,11 @@ import java.awt.event.MouseMotionListener;
 public class MouseActionListener {
 	static int eX;
 	static int eY;
+	static int absX;
+	static int absY;
+	static int absXFin;
+	static int absYFin;
+	static boolean isLeftPressed = false;
 	static int curGrid;
 	
 	MouseHoverListener mouseHoverListener = new MouseHoverListener();
@@ -29,6 +34,11 @@ public class MouseActionListener {
 			// TODO Auto-generated method stub
 			switch (Config.editMode) {
 				case 0: 
+					if (isLeftPressed) {
+						absXFin = e.getXOnScreen();
+						absYFin = e.getYOnScreen();
+						MainFrame.sqArea.paintSelectBox();
+					}
 					break;
 				case 1: 
 					SqBar parent = (SqBar)e.getSource();
@@ -50,7 +60,6 @@ public class MouseActionListener {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -58,10 +67,15 @@ public class MouseActionListener {
 			// TODO Auto-generated method stub
 			switch (Config.editMode) {
 				case 0: 
-					while (Config.selectedNote.size() != 0) {
-						Note note = Config.selectedNote.get(0);
-						note.unselectNote();
+					if (!KeyActionListener.isCtrPressed) {
+						while (Config.selectedNote.size() != 0) {
+							Note note = Config.selectedNote.get(0);
+							note.unselectNote();
+						}
 					}
+					absX = e.getXOnScreen();
+					absY = e.getYOnScreen();
+					isLeftPressed = true;
 					break;
 				case 1: 
 					SqBar parent = (SqBar)e.getSource();
@@ -83,6 +97,7 @@ public class MouseActionListener {
 			// TODO Auto-generated method stub
 			switch (Config.editMode) {
 				case 0: 
+					isLeftPressed = false;
 					break;
 				case 1: 
 					SqBar parent = (SqBar)e.getSource();

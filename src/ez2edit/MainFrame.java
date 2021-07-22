@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
 	static SqArea sqArea = new SqArea();
 	static ConfigArea configArea = new ConfigArea();
 	static StatBar statBar = new StatBar();
-	public static Dimension frameDim = new Dimension(1920,1080);
+	public static Dimension frameDim = new Dimension(1080, 720);
 	
 	static BorderLayout bl = new BorderLayout();
 	

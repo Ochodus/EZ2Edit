@@ -23,4 +23,8 @@ public class SqArea extends JPanel {
 		
 		SqComponent.sqTable.addColumns();
 	}
+	
+	public void paintSelectBox() {
+		
+	}
 }

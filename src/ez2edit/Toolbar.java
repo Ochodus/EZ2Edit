@@ -29,6 +29,7 @@ public class Toolbar extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Config.editMode = 0;
+				EZ2edit.ez2Edit.requestFocus();
 			}
 		});
 		
@@ -36,6 +37,7 @@ public class Toolbar extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Config.editMode = 1;
+				EZ2edit.ez2Edit.requestFocus();
 			}
 		});
 		
@@ -43,6 +45,7 @@ public class Toolbar extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Config.editMode = 2;
+				EZ2edit.ez2Edit.requestFocus();
 			}
 		});
 	}

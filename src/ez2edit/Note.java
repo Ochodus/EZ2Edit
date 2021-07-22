@@ -53,7 +53,7 @@ public class Note extends JPanel {
 	
 	public void selectNote() {
 		if (!this.selected) {
-			if (false) {
+			if (!KeyActionListener.isCtrPressed) {
 				while (Config.selectedNote.size() != 0) {
 					Note note = Config.selectedNote.get(0);
 					note.unselectNote();
