@@ -10,21 +10,20 @@ public class SqArea extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	JScrollPane scroll = new JScrollPane(SqComponent.sqTable);
+	public static SqTable sqTable = new SqTable();
+	private static JScrollPane scroll = new JScrollPane(sqTable);
 	
-	static BorderLayout bl = new BorderLayout();
+	static BorderLayout sqAreaLayout = new BorderLayout();
 	
 	public SqArea() {
-		this.setLayout(bl);
-		
-		setOpaque(true);
-		setBackground(Color.BLACK);
-		add(scroll);
-		
-		SqComponent.sqTable.addColumns();
-	}
-	
-	public void paintSelectBox() {
-		//super.paintComponent(g);
+		this.setVisible(true);
+		this.setLayout(sqAreaLayout);
+
+		this.setBackground(Color.BLACK);
+		this.add(scroll);
+		this.addMouseMotionListener(new MouseActionListener().mouseHoverListener);
+		this.addMouseListener(new MouseActionListener().mouseEventListener);
+
+		sqTable.addColumns();
 	}
 }
