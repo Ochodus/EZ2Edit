@@ -25,6 +25,6 @@ public class SqArea extends JPanel {
 	}
 	
 	public void paintSelectBox() {
-		
+		//super.paintComponent(g);
 	}
 }
