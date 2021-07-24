@@ -16,8 +16,16 @@ public class KeyActionListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getKeyCode() == 17) {isCtrPressed = true;
-		System.out.println("Ctr Pressed.");
+		if (e.getKeyCode() == 17) {
+			isCtrPressed = true;
+		}
+		
+		if (e.getKeyCode() == 127) {
+			while (ProcessInfo.selectedNote.size() > 0) {
+				Note note = ProcessInfo.selectedNote.get(0);
+				note.unselectNote();
+				note.unpinNote();
+			}
 		}
 	}
 
@@ -27,5 +35,4 @@ public class KeyActionListener implements KeyListener {
 		if (e.getKeyCode() == 17) {isCtrPressed = false;}
 		
 	}
-
 }

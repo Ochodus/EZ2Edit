@@ -1,8 +1,5 @@
 package ez2edit;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Config {
 	public static int initBarNumber = 38;
 	public static int initBeat = 4;
@@ -19,7 +16,4 @@ public class Config {
 	public static int typeGap = (int)(4*widthMod);
 	public static int editMode = 1;
 	public static int NoteHeight = 15;
-	
-	public static List<Note> pinnedNote = new ArrayList<Note>();
-	public static List<Note> selectedNote = new ArrayList<Note>();
 }
