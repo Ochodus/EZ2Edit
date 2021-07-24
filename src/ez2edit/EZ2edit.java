@@ -9,5 +9,6 @@ public class EZ2edit {
 		ez2Edit.addKeyListener(new KeyActionListener());
 		ez2Edit.setFocusable(true);
 		ez2Edit.getLocations();
+		MainFrame.sqArea.initScroll();
 	}
 }

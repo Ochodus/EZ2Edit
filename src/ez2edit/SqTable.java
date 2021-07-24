@@ -81,7 +81,7 @@ public class SqTable extends JPanel {
 	
 	public void paintSelectBox(Graphics g) {
 		g.setColor(Color.WHITE);
-		g.drawRect(MouseActionListener.rectX, MouseActionListener.rectY, MouseActionListener.rectWidth, MouseActionListener.rectHeight);
+		g.drawRect(MouseActionListener.rectX, MouseActionListener.rectY + SqArea.verticalScroll.getValue(), MouseActionListener.rectWidth, MouseActionListener.rectHeight);
 	}
 	
 	public void highlightNotesInBox() {

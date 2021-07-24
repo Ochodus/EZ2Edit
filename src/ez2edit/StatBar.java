@@ -12,7 +12,7 @@ public class StatBar extends JPanel {
 
 	public StatBar() {
 		setOpaque(true);
-		setBackground(Color.BLUE);
+		setBackground(new Color(240,240,240));
 		setPreferredSize(StatDim);
 	}
 }

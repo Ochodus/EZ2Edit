@@ -14,6 +14,7 @@ public class SqBar extends JPanel {
 	private static final Dimension barDim = new Dimension(Config.curColumnWidth, Config.curBarHeight);
 	
 	public String type;
+	public int typeInt;
 	public SqColumn line;
 	private static Note hoverNote;
 	
@@ -21,6 +22,7 @@ public class SqBar extends JPanel {
 	int barNumber;
 	boolean isGrid = false;
 	boolean isSelected = false;
+	boolean isBlue = false;
 	
 	SqBar nextBar = null;
 	SqBar prevBar = null;
@@ -29,7 +31,8 @@ public class SqBar extends JPanel {
 		
 		this.barNumber = barNumber;
 		this.line = line;
-		
+		this.typeInt = type;
+		this.isBlue = false;
 		this.setVisible(true);
 		this.setPreferredSize(barDim);
 		this.setBackground(Color.black);
@@ -38,30 +41,30 @@ public class SqBar extends JPanel {
 		
 		switch (type) {
 			case 0:
-				setBackground(Color.YELLOW);
+				setBackground(new Color(48, 48, 0));
 				this.type = SqTable.lineInfo[type][mod];
 				break;
 			case 1:
-				if (mod%2 == 0) {setBackground(Color.DARK_GRAY);}
-				else {setBackground(Color.BLUE);}
+				if (mod%2 == 0) {setBackground(new Color(32, 32, 32)); this.isBlue = false;}
+				else {setBackground(new Color(0, 0, 40)); this.isBlue = true;}
 				if (is2P) {this.type = SqTable.lineInfo[type][mod+5];}
 				else {this.type = SqTable.lineInfo[type][mod];}
 				break;
 			case 2:
-				setBackground(Color.PINK);
+				setBackground(new Color(60, 10, 30));
 				if (is2P) {this.type = SqTable.lineInfo[type][mod+1];}
 				else {this.type = SqTable.lineInfo[type][mod];}
 				break;
 			case 3:
-				setBackground(Color.GREEN);
+				setBackground(new Color(0, 24, 0));
 				this.type = SqTable.lineInfo[type][mod];
 				break;
 			case 4:
-				setBackground(Color.RED);
+				setBackground(new Color(48, 0, 0));
 				this.type = SqTable.lineInfo[type][mod];
 				break;
 			case 5:
-				setBackground(Color.RED);
+				setBackground(new Color(48, 0, 0));
 				this.type = SqTable.lineInfo[type][mod];
 				break;
 		}
@@ -71,7 +74,7 @@ public class SqBar extends JPanel {
 	}
 
 	public void updateHoverNote(int curGrid) {
-		hoverNote = new Note(curGrid);
+		hoverNote = new Note(curGrid, this);
 		add(hoverNote);
 		this.revalidate();
 		this.repaint();

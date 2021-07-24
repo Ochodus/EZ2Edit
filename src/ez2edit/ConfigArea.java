@@ -12,7 +12,7 @@ public class ConfigArea extends JPanel {
 
 	public ConfigArea() {
 		setOpaque(true);
-		setBackground(Color.YELLOW);
+		setBackground(new Color(240,240,240));
 		setPreferredSize(ConfigDim);
 	}
 }

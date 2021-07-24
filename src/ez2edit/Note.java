@@ -13,20 +13,22 @@ public class Note extends JPanel {
 	public SqBar bar;
 	private int pos;
 	private String type;
+	private int typeInt;
 	private int grid;
+	private Color color;
 	private boolean selected = false;
 	private boolean isUnderflowed = false;
 	private boolean isOverflowed = false;
 	
 	private Dimension noteDim = new Dimension(Config.curColumnWidth, Config.NoteHeight);
 	
-	public Note(int curGrid) {
-		
+	public Note(int curGrid, SqBar bar) {
 		this.pos = (Config.grid-curGrid)*(int)((Config.curBarHeight/Config.grid));
 		this.grid = curGrid;
 		this.setVisible(true);
 		this.setPreferredSize(noteDim);
-		this.setBackground(Color.black);
+		this.setColor(bar);
+		this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(182, 182, 182)));
 		this.setBounds(1, this.pos-Config.NoteHeight, Config.curColumnWidth, Config.NoteHeight);
 	}
 	
@@ -47,11 +49,11 @@ public class Note extends JPanel {
 	}
 	
 	public void highlightNote(Color color) {
-		this.setBorder(BorderFactory.createLineBorder(color));
+		this.setBorder(BorderFactory.createLineBorder(new Color(231, 231, 231)));
 	}
 	
 	public void unhighlightNote() {
-		if (!selected) {this.setBorder(null);}
+		if (!selected) {this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(182, 182, 182)));}
 	}
 	
 	public void unpinNote() {
@@ -70,11 +72,11 @@ public class Note extends JPanel {
 					note.unselectNote();
 				}
 				ProcessInfo.selectedNote.add(this);
-				this.setBackground(Color.MAGENTA);
+				this.setBackground(new Color(0, 255, 255));
 			}
 			else {
 				ProcessInfo.selectedNote.add(this);
-				this.setBackground(Color.MAGENTA);
+				this.setBackground(new Color(0, 255, 255));
 			}
 			this.selected = true;
 		}
@@ -82,7 +84,7 @@ public class Note extends JPanel {
 	
 	public void unselectNote() {
 		ProcessInfo.selectedNote.remove(this);
-		this.setBackground(Color.BLACK);
+		this.setColor(this.bar);
 		this.selected = false;
 		this.unhighlightNote();
 	}
@@ -159,7 +161,6 @@ public class Note extends JPanel {
 			this.pos = (Config.grid-this.grid)*(int)((Config.curBarHeight/Config.grid));
 			this.setBounds(1, this.pos-Config.NoteHeight, Config.curColumnWidth, Config.NoteHeight);
 		}
-		
 		SqArea.sqTable.repaint();
 	}
 	
@@ -177,5 +178,25 @@ public class Note extends JPanel {
 	
 	public int getPosYFin() {
 		return this.getLocationOnScreen().y - EZ2edit.ez2Edit.getLocation().y - SqTable.offsetY + this.getHeight();
+	}
+	
+	public void setColor(SqBar bar) {
+		this.typeInt = bar.typeInt;
+		if (this.typeInt == 0) {
+			this.setBackground(new Color(128, 128, 0)); //Config Note
+		}
+		else if (this.typeInt == 1) {
+			if (!bar.isBlue) {this.setBackground(new Color(128, 128, 128));}
+			else {this.setBackground(new Color(0, 0, 128));}//Key Note
+		}
+		else if (this.typeInt == 2) {
+			this.setBackground(new Color(128, 30, 60)); //SC Note
+		}
+		else if (this.typeInt == 3) {
+			this.setBackground(new Color(0, 128, 0)); //PED Note
+		}
+		else if (this.typeInt == 4 || this.typeInt == 5) {
+			this.setBackground(new Color(128, 0, 0)); //E Note
+		}
 	}
 }
